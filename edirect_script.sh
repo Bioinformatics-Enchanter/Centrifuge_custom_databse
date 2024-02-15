@@ -1,6 +1,7 @@
 #!/bin/bash
 
 {
+    esearch -db taxonomy -query "Saccharomyces cerevisiae" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
     esearch -db taxonomy -query "Aspergillus fumigatus" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
     esearch -db taxonomy -query "Aspergillus flavus" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
     esearch -db taxonomy -query "Aspergillus niger" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
@@ -17,8 +18,6 @@
     esearch -db taxonomy -query "Encephalitozoon intestinalis" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
     esearch -db taxonomy -query "Trichophyton rubrum" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
     esearch -db taxonomy -query "Trichophyton mentagrophytes" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
-    esearch -db taxonomy -query "Staphylococcus aureus" | efetch -format docsum | xtract -pattern DocumentSummary -element ScientificName TaxId
+    
 } > fungus_tax_ids.txt
 
-
- 

@@ -6,3 +6,4 @@
 *.txt
 .listing
 database/
+database_new/
