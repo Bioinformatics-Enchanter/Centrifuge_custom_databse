@@ -23,11 +23,6 @@ centrifuge-download -P 16 -o library -d "bacteria,viral" refseq > seqid2taxid.ma
 centrifuge-download -P 16 -o library -d "fungi" -t 746128,5059,5061,33178,5476,498019,42374,5478,4909,36911,5480,5482,5207,58839,5551,523103 genbank >> seqid2taxid.map
 
 
-# centrifuge-download -o library -d "fungi" -t 1280 genbank > seqid2taxid.map
-# it worked perfectly. 
-
-# it worked perfectly. 
-
 ## Add Human genome
 centrifuge-download -o library -d "vertebrate_mammalian" \
                     -a "Chromosome" -t 9606 -c 'reference genome' refseq >> seqid2taxid.map
@@ -46,11 +41,11 @@ cat library/vertebrate_mammalian/*.fna >> input-sequences.fna
 mkdir centrifuge_database
 
 ## Build index with centrifuge-build command with 50 threads
-centrifuge-build -p 16 -a --conversion-table seqid2taxid.map \
+centrifuge-build -p 16 --conversion-table seqid2taxid.map \
                  --taxonomy-tree taxonomy/nodes.dmp --name-table taxonomy/names.dmp \
                  library/input-sequences.fna centrifuge_database/bfhv
                  
-                 
+##### OR            
 #centrifuge-build -a --bmax 1024 --conversion-table seqid2taxid.map \
  #                --taxonomy-tree taxonomy/nodes.dmp --name-table taxonomy/names.dmp \
     #             library/input-sequences.fna centrifuge_database/b+f+h+v               
